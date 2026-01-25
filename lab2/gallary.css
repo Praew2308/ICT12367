@@ -1,0 +1,23 @@
+img {
+    width: 300%;
+    height: 300px;
+    border-radius: 20px;
+    object-fit: cover;
+    opacity: 0.5;
+    transition: transform 0.8s;
+}
+img:hover {
+    opacity: 1;
+    transform: scale(0.8);
+    border: 1px solid white;
+}
+footer {
+    font-size: 14px;
+}
+
+footer p {
+    margin: 0;
+    opacity: 0.8;
+}
+
+
