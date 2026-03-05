@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICT12367 SPU - บันทึกข้อมูลพนักงาน</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #00d4ff; --accent2: #7b2fff; --bg: #0a0a1a; --bg2: #111127; --line: rgba(255,255,255,0.08); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Sarabun', sans-serif; background: var(--bg); color: #fff; }
+
+        .navbar { background: rgba(10,10,26,0.97) !important; backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); padding: 14px 0; }
+        .navbar-brand { font-family: 'Kanit', sans-serif; font-weight: 700; font-size: 1.2rem; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-link { color: rgba(255,255,255,0.7) !important; font-size: 0.88rem; font-weight: 500; padding: 6px 14px !important; border-radius: 6px; transition: all 0.25s; }
+        .nav-link:hover, .nav-link.active { color: var(--accent) !important; background: rgba(0,212,255,0.08); }
+
+        .hero {
+            position: relative; height: 380px; overflow: hidden; display: flex; align-items: center; justify-content: center; background-color: #1a1a2e;
+            background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=90') center/cover no-repeat;
+        }
+        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,10,26,0.8) 40%, rgba(10,10,26,0.3)); }
+        .hero-text { position: relative; z-index: 2; text-align: center; width: 90%; }
+        .hero-text h1 { font-family: 'Kanit', sans-serif; font-size: 1.85rem; font-weight: 700; color: #fff; text-shadow: 0 2px 16px rgba(0,0,0,0.7); max-width: 560px; line-height: 1.3; margin: 0 auto; }
+
+        /* FORM */
+        .form-section { padding: 50px 20px 60px; }
+        .form-card { max-width: 460px; margin: 0 auto; background: var(--bg2); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+        .form-card-header { background: linear-gradient(135deg, var(--accent), var(--accent2)); padding: 16px 24px; }
+        .form-card-header h3 { font-family: 'Kanit', sans-serif; font-size: 1.05rem; font-weight: 700; color: #fff; margin: 0; text-align: center; }
+        .form-card-body { padding: 28px 28px 32px; }
+
+        .form-label { font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.7); margin-bottom: 6px; display: block; }
+        .form-control, .form-select { background: rgba(255,255,255,0.05) !important; border: 1px solid var(--line) !important; border-radius: 6px !important; color: #fff !important; padding: 10px 13px !important; font-family: 'Sarabun', sans-serif; font-size: 0.9rem; transition: border-color 0.25s; }
+        .form-control:focus, .form-select:focus { border-color: var(--accent) !important; box-shadow: 0 0 0 2px rgba(0,212,255,0.12) !important; outline: none !important; }
+        .form-control::placeholder { color: rgba(255,255,255,0.25) !important; }
+        .form-select option { background: #111127; color: #fff; }
+
+        .btn-submit { width: 100%; background: linear-gradient(135deg, var(--accent), var(--accent2)); border: none; color: #fff; padding: 12px; border-radius: 6px; font-family: 'Sarabun', sans-serif; font-weight: 700; font-size: 0.92rem; cursor: pointer; transition: opacity 0.25s, transform 0.25s; margin-top: 6px; }
+        .btn-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+
+        footer { background: var(--bg2); border-top: 1px solid var(--line); padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+        .footer-brand { font-family: 'Kanit', sans-serif; font-weight: 700; font-size: 0.95rem; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        footer small { color: rgba(255,255,255,0.35); font-size: 0.8rem; }
+
+        @media(max-width:640px) { .hero-text { padding-left: 20px; } footer { padding-left: 20px; padding-right: 20px; } }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand" href="/">ICT12367 SPU</a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span style="color:#fff">&#9776;</span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="nav">
+            <ul class="navbar-nav gap-1">
+                <li><a class="nav-link" href="/">หน้าแรก</a></li>
+                <li><a class="nav-link active" href="/form/">ลงทะเบียน</a></li>
+                <li><a class="nav-link" href="/about">เกี่ยวกับเรา</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="hero">
+    <div class="hero-text">
+        <h1>ยินดีต้อนรับสู่เว็บไซต์ของรายวิชา ICT12367</h1>
+    </div>
+</div>
+
+<div class="form-section">
+    <div class="form-card">
+        <div class="form-card-header">
+            <h3>บันทึกข้อมูลพนักงาน</h3>
+        </div>
+        <div class="form-card-body">
+            <form id="empForm" novalidate>
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="กรุณากรอกชื่อ-นามสกุล" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="example@email.com" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Position</label>
+                    <select class="form-select" id="position" name="position">
+                        <option value="Manager">Manager</option>
+                        <option value="Developer">Developer</option>
+                        <option value="Designer">Designer</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="0XX-XXX-XXXX" required>
+                </div>
+                <button type="submit" class="btn-submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <span class="footer-brand">ICT12367 SPU</span>
+    <small>© 2024 ICT12367 SPU | Information Technology</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById('empForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('fullname').value.trim();
+        if (!name) { alert('กรุณากรอกชื่อ-นามสกุล'); return; }
+        const ok = confirm('คุณ ' + name + ' ยืนยันที่จะบันทึกข้อมูลนี้ใช่หรือไม่?');
+        if (ok) { alert('บันทึกข้อมูลสำเร็จเรียบร้อยแล้ว!'); this.reset(); }
+    });
+</script>
+</body>
+</html>

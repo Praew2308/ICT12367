@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICT12367 SPU - หน้าแรก</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #00d4ff; --accent2: #7b2fff; --bg: #0a0a1a; --bg2: #111127; --line: rgba(255,255,255,0.08); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Sarabun', sans-serif; background: var(--bg); color: #fff; }
+
+        .navbar { background: rgba(10,10,26,0.97) !important; backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); padding: 14px 0; }
+        .navbar-brand { font-family: 'Kanit', sans-serif; font-weight: 700; font-size: 1.2rem; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-link { color: rgba(255,255,255,0.7) !important; font-size: 0.88rem; font-weight: 500; padding: 6px 14px !important; border-radius: 6px; transition: all 0.25s; }
+        .nav-link:hover, .nav-link.active { color: var(--accent) !important; background: rgba(0,212,255,0.08); }
+
+        .hero {
+            position: relative; height: 380px; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+            background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=90') center/cover no-repeat;
+            background-color: #1a1a2e;
+        }
+        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,10,26,0.8) 40%, rgba(10,10,26,0.3)); }
+        .hero-text { position: relative; z-index: 2; text-align: center; width: 90%; }
+        .hero-text h1 { font-family: 'Kanit', sans-serif; font-size: 1.85rem; font-weight: 700; color: #fff; text-shadow: 0 2px 16px rgba(0,0,0,0.7); max-width: 560px; line-height: 1.3; margin: 0 auto; }
+
+        .intro-bar { background: var(--bg2); border-bottom: 1px solid var(--line); padding: 18px 40px; text-align: center; }
+        .intro-bar p { color: var(--accent); font-size: 0.9rem; line-height: 1.7; margin: 0; max-width: 800px; display: inline-block; }
+
+        .cards-section { padding: 28px 40px 32px; max-width: 900px; margin: 0 auto; }
+        .content-card { display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin-bottom: 16px; background: var(--bg2); transition: border-color 0.3s, transform 0.3s; }
+        .content-card:hover { border-color: rgba(0,212,255,0.35); transform: translateY(-2px); }
+        .card-img { flex: 0 0 210px; height: 155px; overflow: hidden; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+        .content-card:hover .card-img img { transform: scale(1.06); }
+        .card-body { padding: 22px 28px; display: flex; flex-direction: column; justify-content: center; }
+        .card-body h5 { font-family: 'Kanit', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+        .card-body p { color: rgba(255,255,255,0.55); font-size: 0.84rem; line-height: 1.75; margin: 0; }
+
+        .map-section { padding: 0 40px 48px; max-width: 900px; margin: 0 auto; }
+        .map-box { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--bg2); }
+        .map-box-header { padding: 16px 22px; border-bottom: 1px solid var(--line); }
+        .map-box-header h5 { font-family: 'Kanit', sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; margin: 0; }
+        .map-box iframe { display: block; border: 0; }
+
+        footer { background: var(--bg2); border-top: 1px solid var(--line); padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+        .footer-brand { font-family: 'Kanit', sans-serif; font-weight: 700; font-size: 0.95rem; background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        footer small { color: rgba(255,255,255,0.35); font-size: 0.8rem; }
+
+        @media(max-width:640px) {
+            .content-card { flex-direction: column; }
+            .card-img { flex: 0 0 160px; height: 160px; }
+            .intro-bar, .cards-section, .map-section, footer { padding-left: 20px; padding-right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand" href="/">ICT12367 SPU</a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span style="color:#fff">&#9776;</span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="nav">
+            <ul class="navbar-nav gap-1">
+                <li><a class="nav-link active" href="/">หน้าแรก</a></li>
+                <li><a class="nav-link" href="/form/">ลงทะเบียน</a></li>
+                <li><a class="nav-link" href="/about">เกี่ยวกับเรา</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="hero">
+    <div class="hero-text">
+        <h1>ยินดีต้อนรับสู่เว็บไซต์ของรายวิชา ICT12367</h1>
+    </div>
+</div>
+
+<div class="intro-bar">
+    <p>ยินดีต้อนรับเข้าสู่รายวิชา ICT12367 การใช้กรอบงานสำหรับการพัฒนาเว็บแอปพลิเคชัน เพื่อความมั่นคงปลอดภัย</p>
+</div>
+
+<div class="cards-section">
+
+    <!-- สินค้า -->
+    <div class="content-card">
+        <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=420&q=85" alt="สินค้า">
+        </div>
+        <div class="card-body">
+            <h5>สินค้า</h5>
+            <p>ผลิตภัณฑ์ซอฟต์แวร์และแอปพลิเคชันที่พัฒนาโดยนักศึกษาวิชา ICT12367 ครอบคลุมระบบจัดการฐานข้อมูล เว็บแอปพลิเคชัน และโปรแกรมประยุกต์ที่ตอบโจทย์การใช้งานจริงในยุคดิจิทัล</p>
+        </div>
+    </div>
+
+    <!-- บริการ -->
+    <div class="content-card">
+        <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=420&q=85" alt="บริการ">
+        </div>
+        <div class="card-body">
+            <h5>บริการ</h5>
+            <p>บริการด้านการพัฒนาและให้คำปรึกษาระบบสารสนเทศ ออกแบบและพัฒนาเว็บไซต์ รวมถึงการดูแลรักษาความปลอดภัยของข้อมูลและระบบเครือข่ายให้กับองค์กร</p>
+        </div>
+    </div>
+
+    <!-- เกี่ยวกับเรา -->
+    <div class="content-card">
+        <div class="card-img">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=420&q=85" alt="เกี่ยวกับเรา">
+        </div>
+        <div class="card-body">
+            <h5>เกี่ยวกับเรา</h5>
+            <p>ภาควิชาเทคโนโลยีสารสนเทศ มุ่งมั่นผลิตบัณฑิตที่มีทักษะด้าน ICT อย่างครบถ้วน ทั้งการพัฒนาซอฟต์แวร์ ความปลอดภัยไซเบอร์ และนวัตกรรมดิจิทัล เพื่อรองรับความต้องการของตลาดแรงงาน</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="map-section">
+    <div class="map-box">
+        <div class="map-box-header"><h5>แสดงแผนที่ใน Google Map</h5></div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118014.3!2d98.9075!3d18.7883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30da3a775c0b6e4b%3A0x7cbf6a2069a77d5!2z4LiA4Lij4Li04Lih4LiV4Li04Lih!5e0!3m2!1sth!2sth!4v1700000000000"
+            width="100%" height="380" loading="lazy"></iframe>
+    </div>
+</div>
+
+<footer>
+    <span class="footer-brand">ICT12367 SPU</span>
+    <small>© 2024 ICT12367 SPU | Information Technology</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
